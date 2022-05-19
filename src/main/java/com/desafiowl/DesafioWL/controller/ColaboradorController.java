@@ -1,5 +1,6 @@
 package com.desafiowl.DesafioWL.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import com.desafiowl.DesafioWL.entities.Colaborador;
 import com.desafiowl.DesafioWL.repositories.ColaboradorRepository;
 
@@ -18,6 +18,22 @@ public class ColaboradorController {
 
 	@Autowired
 	private ColaboradorRepository repo;
+	
+	public List<Colaborador> listAll(){
+		return (List<Colaborador>) this.repo.findAll();
+	}
+	
+	public void salvar(Colaborador colaborador) {
+		this.repo.save(colaborador);
+	}
+	
+	public Colaborador getColaborador(Long id) {
+		return this.repo.findById(id).get();
+	}
+	
+	public void delete(Long id) {
+		this.repo.deleteById(id);
+	}
 
 	public ColaboradorController(ColaboradorRepository repo) {
 		this.repo = repo;

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Sistema de Café da manhã</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+</head>
+
+<body>
+	<div class="container my-2">
+		<a th:href="@{/lanches/cadastrar}" class="btn btn-primary btn-sm mb-3">Incluir lanche</a>
+		<h1>Lanches</h1>
+		<table border="1" class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>Colaborador</th>
+					<th>Lanche</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="lanche : ${listaLanches}">
+					<td th:text="${lanche.colaborador}"></td>
+					<td th:text="${lanche.lanche}"></td>
+					<td>
+						<a th:href="@{/lanches/{id}(id=${lanche.id})}" class="btn btn-primary">Alterar</a>
+						<a th:href="@{/lanches/remover/{id}(id=${lanche.id})}" class="btn btn-danger">Excluir</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<nav aria-label="...">
+			<ul class="pagination">
+				<li th:if="${listaLanches.totalPages > 0}" th:each="numeroPagina : ${numerosPaginas}"
+					th:class="${numeroPagina==listaLanches.number + 1} ? 'page-item active' : 'page-item'">
+					<a class="page-link" th:href="@{/lanches(size=${listaLanches.size}, page=${numeroPagina})}"
+						th:text=${numeroPagina}></a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</body>
+
+</html>

@@ -69,7 +69,7 @@ public class Colaborador implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cpf);
+		return Objects.hash(cpf, id);
 	}
 
 	@Override
@@ -81,7 +81,7 @@ public class Colaborador implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Colaborador other = (Colaborador) obj;
-		return Objects.equals(cpf, other.cpf);
+		return Objects.equals(cpf, other.cpf) && Objects.equals(id, other.id);
 	}
 
 }

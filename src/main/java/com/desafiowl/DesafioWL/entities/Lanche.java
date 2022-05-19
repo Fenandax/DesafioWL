@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tb_lanche")
 public class Lanche {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
@@ -60,7 +60,7 @@ public class Lanche {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(lanche);
+		return Objects.hash(id, lanche);
 	}
 
 	@Override
@@ -72,7 +72,7 @@ public class Lanche {
 		if (getClass() != obj.getClass())
 			return false;
 		Lanche other = (Lanche) obj;
-		return Objects.equals(lanche, other.lanche);
+		return Objects.equals(id, other.id) && Objects.equals(lanche, other.lanche);
 	}
 
 }
