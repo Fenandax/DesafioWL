@@ -1,37 +1,39 @@
 package com.desafiowl.DesafioWL.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_lanche")
 public class Lanche {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 	String lanche;
 
-	@ManyToOne
-	@JoinColumn(name = "colaborador_id")
-	private Colaborador colaborador;
+	@JsonIgnore
+	@OneToMany(mappedBy = "lanche")
+	private List<Colaborador> colaboradores = new ArrayList<>();
 
 	public Lanche() {
 
 	}
 
-	public Lanche(Long id, String lanche, Colaborador colaborador) {
+	public Lanche(Long id, String lanche) {
 		super();
 		this.id = id;
 		this.lanche = lanche;
-		this.colaborador = colaborador;
 	}
 
 	public Long getId() {
@@ -50,12 +52,8 @@ public class Lanche {
 		this.lanche = lanche;
 	}
 
-	public Colaborador getColaborador() {
-		return colaborador;
-	}
-
-	public void setColaborador(Colaborador colaborador) {
-		this.colaborador = colaborador;
+	public List<Colaborador> getColaboradores() {
+		return colaboradores;
 	}
 
 	@Override

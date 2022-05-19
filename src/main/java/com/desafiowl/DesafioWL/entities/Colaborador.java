@@ -1,18 +1,15 @@
 package com.desafiowl.DesafioWL.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_colaborador")
@@ -25,18 +22,19 @@ public class Colaborador implements Serializable {
 	String nome;
 	String cpf;
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "colaborador")
-	private List<Lanche> lanches = new ArrayList<>();
+	@ManyToOne
+	@JoinColumn(name = "lanche_id")
+	private Lanche lanche;
 
 	public Colaborador() {
 	}
 
-	public Colaborador(Long id, String nome, String cpf) {
+	public Colaborador(Long id, String nome, String cpf, Lanche lanche) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
+		this.lanche = lanche;
 	}
 
 	public Long getId() {
@@ -63,8 +61,12 @@ public class Colaborador implements Serializable {
 		this.cpf = cpf;
 	}
 
-	public List<Lanche> getLanches() {
-		return lanches;
+	public Lanche getLanche() {
+		return lanche;
+	}
+
+	public void setLanche(Lanche lanche) {
+		this.lanche = lanche;
 	}
 
 	@Override

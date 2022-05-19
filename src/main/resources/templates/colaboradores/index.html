@@ -27,7 +27,7 @@
 				<tr th:each="colaborador : ${listaColaboradores}">
 					<td th:text="${colaborador.nome}"></td>
 					<td th:text="${colaborador.cpf}"></td>
-					<td th:text="lanche"></td>
+					<td th:text="${colaborador.lanche.getLanche()}"></td>
 					<td>
 						<a th:href="@{/colaboradores/{id}(id=${colaborador.id})}" class="btn btn-primary">Alterar</a>
 						<a th:href="@{/colaboradores/remover/{id}(id=${colaborador.id})}" class="btn btn-danger">Excluir</a>			

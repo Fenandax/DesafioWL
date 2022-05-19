@@ -29,25 +29,29 @@ public class Insertion implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		Colaborador c1 = new Colaborador(null, "Fernanda", "4545666687");
-		Colaborador c2 = new Colaborador(null, "Nicolas", "56218964");
-		Colaborador c3 = new Colaborador(null, "João", "645068823");
-
-		colaboradorRepository.save(c1);
-		colaboradorRepository.save(c2);
-		colaboradorRepository.save(c3);
-
-		Lanche l1 = new Lanche(null, "Sanduíche", c1);
-		Lanche l2 = new Lanche(null, "Café", c1);
-		Lanche l3 = new Lanche(null, "Bolo", c1);
-		Lanche l4 = new Lanche(null, "Torrada", c2);
-		Lanche l5 = new Lanche(null, "Chá", c3);
+		Lanche l1 = new Lanche(null, "Sanduíche");
+		Lanche l2 = new Lanche(null, "Café");
+		Lanche l3 = new Lanche(null, "Bolo");
+		Lanche l4 = new Lanche(null, "Torrada");
+		Lanche l5 = new Lanche(null, "Chá");
 
 		lancheRepository.save(l1);
 		lancheRepository.save(l2);
 		lancheRepository.save(l3);
 		lancheRepository.save(l4);
 		lancheRepository.save(l5);
+
+		Colaborador c1 = new Colaborador(null, "Fernanda", "4545666687", l1);
+		Colaborador c2 = new Colaborador(null, "Júlia", "62353473", l2);
+		Colaborador c3 = new Colaborador(null, "Carolina", "93156465", l3);
+		Colaborador c4 = new Colaborador(null, "Nicolas", "56218964", l4);
+		Colaborador c5 = new Colaborador(null, "João", "645068823", l5);
+
+		colaboradorRepository.save(c1);
+		colaboradorRepository.save(c2);
+		colaboradorRepository.save(c3);
+		colaboradorRepository.save(c4);
+		colaboradorRepository.save(c5);
 
 		Pedido p1 = new Pedido(c1, l1);
 		Pedido p2 = new Pedido(c1, l2);
