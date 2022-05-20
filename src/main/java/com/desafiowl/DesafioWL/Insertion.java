@@ -8,10 +8,8 @@ import org.springframework.stereotype.Component;
 
 import com.desafiowl.DesafioWL.entities.Colaborador;
 import com.desafiowl.DesafioWL.entities.Lanche;
-import com.desafiowl.DesafioWL.entities.Pedido;
 import com.desafiowl.DesafioWL.repositories.ColaboradorRepository;
 import com.desafiowl.DesafioWL.repositories.LancheRepository;
-import com.desafiowl.DesafioWL.repositories.PedidoRepository;
 
 @Component
 @Transactional
@@ -23,9 +21,6 @@ public class Insertion implements CommandLineRunner {
 	@Autowired
 	private LancheRepository lancheRepository;
 
-	@Autowired
-	private PedidoRepository pedidoRepository;
-
 	@Override
 	public void run(String... args) throws Exception {
 
@@ -33,13 +28,15 @@ public class Insertion implements CommandLineRunner {
 		Lanche l2 = new Lanche(null, "Café");
 		Lanche l3 = new Lanche(null, "Bolo");
 		Lanche l4 = new Lanche(null, "Torrada");
-		Lanche l5 = new Lanche(null, "Chá");
+		Lanche l5 = new Lanche(null, "Chá");		
+		Lanche l6 = new Lanche(null, "Bolacha");
 
 		lancheRepository.save(l1);
 		lancheRepository.save(l2);
 		lancheRepository.save(l3);
 		lancheRepository.save(l4);
 		lancheRepository.save(l5);
+		lancheRepository.save(l6);
 
 		Colaborador c1 = new Colaborador(null, "Fernanda", "4545666687", l1);
 		Colaborador c2 = new Colaborador(null, "Júlia", "62353473", l2);
@@ -52,18 +49,6 @@ public class Insertion implements CommandLineRunner {
 		colaboradorRepository.save(c3);
 		colaboradorRepository.save(c4);
 		colaboradorRepository.save(c5);
-
-		Pedido p1 = new Pedido(c1, l1);
-		Pedido p2 = new Pedido(c1, l2);
-		Pedido p3 = new Pedido(c1, l3);
-		Pedido p4 = new Pedido(c2, l4);
-		Pedido p5 = new Pedido(c3, l5);
-
-		pedidoRepository.save(p1);
-		pedidoRepository.save(p2);
-		pedidoRepository.save(p3);
-		pedidoRepository.save(p4);
-		pedidoRepository.save(p5);
 	}
 
 }
