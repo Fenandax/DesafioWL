@@ -26,7 +26,7 @@ public class LancheController {
 	//mapeamento da URL
 	@GetMapping("/lanches")
 	public String lanches(Model model) {
-		model.addAttribute("listaLanchees", repo.findAll());
+		model.addAttribute("listaLanches", repo.findAll());
 		return "lanches/index";
 	}
 

@@ -3,6 +3,7 @@ package com.desafiowl.DesafioWL.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +23,7 @@ public class Colaborador implements Serializable {
 	String nome;
 	String cpf;
 
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name = "lanche_id")
 	private Lanche lanche;
 
