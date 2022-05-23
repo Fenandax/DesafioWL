@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-<meta charset="UTF-8" />
-<title>Sistema de Café da manhã</title>
 
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-	crossorigin="anonymous">
+<head>
+	<meta charset="UTF-8" />
+	<title>Sistema de Café da manhã</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
 </head>
+
 <body>
 	<div class="container my-2">
 		<a th:href="@{/colaboradores/cadastrar}" class="btn btn-primary btn-sm mb-3">Incluir colaborador</a>
@@ -30,20 +30,22 @@
 					<td th:text="${colaborador.lanche.getLanche()}"></td>
 					<td>
 						<a th:href="@{/colaboradores/{id}(id=${colaborador.id})}" class="btn btn-primary">Alterar</a>
-						<a th:href="@{/colaboradores/remover/{id}(id=${colaborador.id})}" class="btn btn-danger">Excluir</a>			
+						<a th:href="@{/colaboradores/remover/{id}(id=${colaborador.id})}" class="btn btn-danger">Excluir</a>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 		<nav aria-label="...">
-		    <ul class="pagination">
-			    <li th:if="${listaColaboradores.totalPages > 0}" th:each="numeroPagina : ${numerosPaginas}" 
-			    	th:class="${numeroPagina==listaColaboradores.number + 1} ? 'page-item active' : 'page-item'">
-			    	<a class="page-link" th:href="@{/colaboradores(size=${listaColaboradores.size}, page=${numeroPagina})}"
-			        th:text=${numeroPagina}></a>
-			    </li>
-		    </ul>
+			<ul class="pagination">
+				<li th:if="${listaColaboradores.totalPages > 0}" th:each="numeroPagina : ${numerosPaginas}"
+					th:class="${numeroPagina==listaColaboradores.number + 1} ? 'page-item active' : 'page-item'">
+					<a class="page-link"
+						th:href="@{/colaboradores(size=${listaColaboradores.size}, page=${numeroPagina})}"
+						th:text=${numeroPagina}></a>
+				</li>
+			</ul>
 		</nav>
 	</div>
 </body>
+
 </html>

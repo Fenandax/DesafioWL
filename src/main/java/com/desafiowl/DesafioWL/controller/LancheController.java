@@ -1,5 +1,6 @@
 package com.desafiowl.DesafioWL.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,18 +23,34 @@ public class LancheController {
 	public LancheController(LancheRepository repo) {
 		this.repo = repo;
 	}
+	
+	public List<Lanche> listAll(){
+		return (List<Lanche>) this.repo.findAll();
+	}
+	
+	public void salvar(@ModelAttribute("lanche") Lanche lanche) {
+		this.repo.save(lanche);
+	}
+	
+	public Lanche getLanche(Long id) {
+		return this.repo.findById(id).get();
+	}
+	
+	public void delete(Long id) {
+		this.repo.deleteById(id);
+	}
 
 	//mapeamento da URL
 	@GetMapping("/lanches")
 	public String lanches(Model model) {
 		model.addAttribute("listaLanches", repo.findAll());
-		return "lanches/index";
+		return "colaboradores/index";
 	}
 
 	//cadastro de lanche
 	@GetMapping("/lanches/cadastrar")
 	public String cadastrarLanche(@ModelAttribute("lanche") Lanche lanche) {
-		return "lanches/form";
+		return "colaboradores/form";
 	}
 
 	//encontrar por ID
@@ -45,14 +62,14 @@ public class LancheController {
 		}
 
 		model.addAttribute("lanche", lancheOpt.get());
-		return "lanches/form";
+		return "colaboradores/form";
 	}
 
 	//salvar novo lanche
 	@PostMapping("/lanches/salvar")
 	public String salvarLanche(@ModelAttribute("lanche") Lanche lanche) {
 		repo.save(lanche);
-		return "lanches/form";
+		return "colaboradores/form";
 	}
 
 	//remover lanche
