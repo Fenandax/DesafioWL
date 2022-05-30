@@ -23,7 +23,7 @@ public class Colaborador implements Serializable {
 	String nome;
 	String cpf;
 
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "lanche_id")
 	private Lanche lanche;
 
