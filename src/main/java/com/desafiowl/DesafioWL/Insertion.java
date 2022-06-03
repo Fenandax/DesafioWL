@@ -38,11 +38,11 @@ public class Insertion implements CommandLineRunner {
 		lancheRepository.save(l5);
 		lancheRepository.save(l6);
 
-		Colaborador c1 = new Colaborador(null, "Fernanda", "4545666687", l1);
-		Colaborador c2 = new Colaborador(null, "Júlia", "62353473", l2);
-		Colaborador c3 = new Colaborador(null, "Carolina", "93156465", l3);
-		Colaborador c4 = new Colaborador(null, "Nicolas", "56218964", l4);
-		Colaborador c5 = new Colaborador(null, "João", "645068823", l5);
+		Colaborador c1 = new Colaborador(null, "Fernanda", "20795788656", l1);
+		Colaborador c2 = new Colaborador(null, "Júlia", "60084575936", l2);
+		Colaborador c3 = new Colaborador(null, "Carolina", "08622428486", l3);
+		Colaborador c4 = new Colaborador(null, "Nicolas", "82727776510", l4);
+		Colaborador c5 = new Colaborador(null, "João", "60305808592", l5);
 
 		colaboradorRepository.save(c1);
 		colaboradorRepository.save(c2);
